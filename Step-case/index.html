@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step-case | Interactive Playbooks</title>
+    
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Noto Sans (Closest free alternative to Google's internal Nano/Product Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Marked.js for dynamic Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        /* Base Antigravity Theme */
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #FFFFFF;
+            color: #202124;
+        }
+
+        /* Dynamic Markdown Injection Styles (Forcing the Google Doc Look) */
+        #dynamic-docs {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        #dynamic-docs h1 {
+            font-size: 2.25rem; font-weight: 700; color: #202124; 
+            margin-top: 3rem; margin-bottom: 1.5rem;
+        }
+        #dynamic-docs h2 {
+            font-size: 1.5rem; font-weight: 700; color: #202124; 
+            margin-top: 2.5rem; margin-bottom: 1rem;
+            border-bottom: 1px solid #F1F3F4; padding-bottom: 0.5rem;
+        }
+        #dynamic-docs h3 {
+            font-size: 1.15rem; font-weight: 700; color: #3C4043; 
+            margin-top: 2rem; margin-bottom: 0.75rem;
+        }
+        #dynamic-docs p {
+            font-size: 1rem; line-height: 1.75; color: #3C4043; 
+            margin-bottom: 1.25rem;
+        }
+        #dynamic-docs ul {
+            list-style-type: disc; margin-left: 2rem; margin-bottom: 1.5rem; color: #3C4043;
+        }
+        #dynamic-docs li {
+            margin-bottom: 0.5rem; line-height: 1.6;
+        }
+        /* Styling inline code blocks */
+        #dynamic-docs code {
+            background-color: #F8F9FA; color: #1A73E8; 
+            padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.9em;
+        }
+        /* Completely hiding tabular structures if they accidentally appear in MD */
+        #dynamic-docs table { display: none; } 
+    </style>
+</head>
+<body class="antialiased min-h-screen">
+
+    <!-- Hero Section -->
+    <header class="w-full max-w-4xl mx-auto pt-32 pb-20 px-8 text-center">
+        <h1 class="text-6xl font-bold tracking-tight text-[#202124] mb-6">Step-case</h1>
+        <p class="text-xl text-[#5F6368] mb-12 max-w-2xl mx-auto leading-relaxed">
+            The minimalist, interactive playbook engine. Create weightless, distraction-free software runbooks without the dashboard bloat.
+        </p>
+        
+        <!-- Primary Download Button -->
+        <a id="download-btn" href="#" 
+           class="inline-block bg-[#1A73E8] hover:bg-[#1557B0] text-white text-lg font-medium px-8 py-4 rounded-full transition-colors duration-200 shadow-sm">
+            Download Step-case
+        </a>
+        <p id="version-label" class="text-sm text-[#80868B] mt-4">Fetching latest version...</p>
+    </header>
+
+    <!-- Divider -->
+    <div class="w-full max-w-4xl mx-auto border-t border-[#F1F3F4]"></div>
+
+    <!-- Documentation Container (Populated by JS) -->
+    <main id="dynamic-docs" class="pb-32 pt-8">
+        <p class="text-center text-[#80868B]">Loading documentation...</p>
+    </main>
+
+    <!-- Application Logic & Configuration -->
+    <script>
+        // ==========================================
+        // CONFIGURATION VARIABLES (EDIT THESE)
+        // ==========================================
+        const CONFIG = {
+            // The GitHub API path to your repository (Format: User/Repo)
+            // Note: GitHub releases are tied to the Repo (Web_Apps), not the subfolder.
+            githubRepo: "Sakhaalex/Web_Apps",
+            
+            // The raw URL to your markdown file. 
+            // Change "README.md" to "release-v1.0.md" when you want to update the docs.
+            markdownDocUrl: "https://raw.githubusercontent.com/Sakhaalex/Web_Apps/main/Step-case/README.md",
+            
+            // Expected file extensions to look for in the release assets
+            targetFileTypes: [".exe", ".zip"],
+            
+            // Fallback URL if the API fails
+            fallbackUrl: "https://github.com/Sakhaalex/Web_Apps/tree/main/Step-case"
+        };
+        // ==========================================
+
+        // Function 1: Fetch and Render Markdown Documentation
+        async function loadDocumentation() {
+            const docsContainer = document.getElementById('dynamic-docs');
+            try {
+                const response = await fetch(CONFIG.markdownDocUrl);
+                if (!response.ok) throw new Error("Failed to fetch markdown");
+                const rawMarkdown = await response.text();
+                
+                // Parse markdown to HTML using marked.js
+                docsContainer.innerHTML = marked.parse(rawMarkdown);
+            } catch (error) {
+                console.error("Error loading docs:", error);
+                docsContainer.innerHTML = `<p class="text-red-500">Could not load documentation at this time. Please check the <a href="${CONFIG.fallbackUrl}" class="text-[#1A73E8] underline">GitHub repository</a>.</p>`;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDocumentation();
+            // Phase 2 will inject the GitHub API Release fetching logic here
+        });
+    </script>
+</body>
+</html>
