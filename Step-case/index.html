@@ -128,6 +128,53 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadDocumentation();
             // Phase 2 will inject the GitHub API Release fetching logic here
+            // ==========================================
+        // Phase 2: GitHub API Release Fetcher
+        // ==========================================
+        async function fetchLatestRelease() {
+            const downloadBtn = document.getElementById('download-btn');
+            const versionLabel = document.getElementById('version-label');
+            
+            try {
+                // 1. Ping the GitHub API for the latest release in the repository
+                const apiUrl = `https://api.github.com/repos/${CONFIG.githubRepo}/releases/latest`;
+                const response = await fetch(apiUrl);
+                
+                if (!response.ok) throw new Error("GitHub API rate limit or no releases found.");
+                
+                const releaseData = await response.json();
+                const versionTag = releaseData.tag_name || "Latest";
+                let finalDownloadUrl = CONFIG.fallbackUrl;
+                
+                // 2. Scan the release assets for our target file types (.exe or .zip)
+                if (releaseData.assets && releaseData.assets.length > 0) {
+                    const targetAsset = releaseData.assets.find(asset => 
+                        CONFIG.targetFileTypes.some(ext => asset.name.toLowerCase().endsWith(ext))
+                    );
+                    
+                    if (targetAsset) {
+                        finalDownloadUrl = targetAsset.browser_download_url;
+                    }
+                }
+                
+                // 3. Update the Hero UI with the live data
+                downloadBtn.href = finalDownloadUrl;
+                versionLabel.innerHTML = `Version <b>${versionTag}</b> • Free & Offline`;
+                
+            } catch (error) {
+                console.warn("Falling back to standard repository link.", error);
+                
+                // Fallback: If no release exists yet, point to the source code folder
+                downloadBtn.href = CONFIG.fallbackUrl;
+                versionLabel.textContent = "View source on GitHub";
+            }
+        }
+
+        // Initialize both Documentation and Release Fetcher on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDocumentation();
+            fetchLatestRelease();
+        });
         });
     </script>
 </body>
