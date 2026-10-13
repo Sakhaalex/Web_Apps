@@ -1,8 +1,8 @@
-name: Deploy Custom Folder to Pages
+name: Deploy All Apps to Pages
 
 on:
   push:
-    branches: ["main"] # Change to "master" if your default branch is master
+    branches: ["main"] # Change to "master" if your default branch is named master
 
 permissions:
   contents: read
@@ -20,17 +20,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
+      - name: Upload entire repository
         uses: actions/upload-pages-artifact@v3
         with:
-          # Tell GitHub to look inside your custom folder
-          path: './Step-case'
+          path: '.' # This uploads the root, keeping all subfolders intact
 
       - name: Deploy to GitHub Pages
         id: deployment
