@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex Creations | Web Apps</title>
     
-    <!-- Tailwind CSS (via CDN) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Fonts: Noto Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Marked.js for dynamic Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     
     <style>
         body {
@@ -17,14 +20,46 @@
             background-color: #FFFFFF;
             color: #202124;
         }
-        /* Subtle hover lift for project cards */
-        .project-card {
-            transition: all 0.2s ease-in-out;
+        
+        /* Dynamic Markdown Injection Styles */
+        #dynamic-content h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem; color: #202124; }
+        #dynamic-content h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 1px solid #F1F3F4; padding-bottom: 0.5rem; }
+        #dynamic-content p { font-size: 1rem; line-height: 1.75; color: #3C4043; margin-bottom: 1.25rem; }
+        
+        /* Styling the Markdown Table for the App Directory */
+        #dynamic-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(60,64,67,0.1);
+            border-radius: 8px;
+            overflow: hidden;
         }
-        .project-card:hover {
-            box-shadow: 0 4px 12px rgba(60,64,67,0.08);
-            border-color: transparent;
-            transform: translateY(-2px);
+        #dynamic-content th, #dynamic-content td {
+            border: 1px solid #E8EAED;
+            padding: 1rem;
+            text-align: left;
+        }
+        #dynamic-content th {
+            background-color: #F8F9FA;
+            font-weight: 600;
+            color: #202124;
+        }
+        #dynamic-content tr:hover td {
+            background-color: #F8F9FA;
+        }
+        #dynamic-content a {
+            color: #1A73E8;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        #dynamic-content a:hover {
+            text-decoration: underline;
+        }
+        #dynamic-content em {
+            color: #80868B;
+            font-size: 0.875rem;
         }
     </style>
 </head>
@@ -33,12 +68,8 @@
     <!-- Header / Branding -->
     <header class="w-full max-w-5xl mx-auto px-6 py-12 flex items-center justify-between border-b border-[#F1F3F4]">
         <div class="flex items-center gap-4">
-            <!-- 
-              LOGO UPLOAD INSTRUCTIONS: 
-              Upload your circular SVG logo to the root folder and name it 'logo.svg' 
-            -->
             <div class="w-12 h-12 bg-[#F8F9FA] rounded-full flex items-center justify-center border border-[#E8EAED] overflow-hidden">
-                <img src="logo.svg" alt="Alex Creations" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                <img src="logo.svg" alt="Alex Creations Logo" class="w-full h-full object-cover" onerror="this.style.display='none'">
             </div>
             <div>
                 <h1 class="text-xl font-bold text-[#202124] tracking-tight">Alex Creations</h1>
@@ -52,52 +83,10 @@
         </div>
     </header>
 
-    <!-- Main Content & Project Grid -->
-    <main class="w-full max-w-5xl mx-auto px-6 py-16 flex-grow">
-        
-        <div class="mb-12">
-            <h2 class="text-3xl font-bold tracking-tight mb-4">Workspace & Projects</h2>
-            <p class="text-lg text-[#5F6368] max-w-2xl">
-                A collection of minimalist, high-performance web applications and desktop tools focused on frictionless user experiences.
-            </p>
-        </div>
-
-        <!-- The Grid (Automatically responsive) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <!-- PROJECT 1: Step-case -->
-            <a href="./Step-case/" class="project-card block border border-[#E8EAED] rounded-2xl p-6 group bg-white cursor-pointer relative">
-                <!-- Top Right Arrow Icon -->
-                <div class="absolute top-6 right-6 text-[#9AA0A6] group-hover:text-[#1A73E8] transition-colors">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </div>
-                
-                <h3 class="text-xl font-bold text-[#202124] mb-2 pr-8">Step-case</h3>
-                <p class="text-sm text-[#5F6368] mb-6 line-clamp-3">
-                    The minimalist, interactive playbook engine. Create weightless, distraction-free software runbooks without the dashboard bloat.
-                </p>
-                
-                <div class="flex items-center gap-2 mt-auto">
-                    <span class="px-2.5 py-1 bg-[#E8F0FE] text-[#1967D2] text-xs font-semibold rounded-md">Desktop App</span>
-                    <span class="px-2.5 py-1 bg-[#F1F3F4] text-[#3C4043] text-xs font-medium rounded-md">Vanilla JS</span>
-                </div>
-            </a>
-
-            <!-- PROJECT 2: Coming Soon (Placeholder) -->
-            <div class="block border border-dashed border-[#DADCE0] rounded-2xl p-6 bg-[#F8F9FA] flex flex-col justify-center items-center text-center min-h-[200px]">
-                <div class="w-10 h-10 bg-[#E8EAED] rounded-full flex items-center justify-center mb-3">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5F6368" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-medium text-[#5F6368]">New Project</h3>
-                <p class="text-sm text-[#80868B] mt-1">In development...</p>
-            </div>
-
+    <!-- Main Content (Populated from README.md) -->
+    <main class="w-full max-w-5xl mx-auto px-6 py-12 flex-grow">
+        <div id="dynamic-content">
+            <p class="text-center text-[#80868B]">Loading portfolio data...</p>
         </div>
     </main>
 
@@ -105,6 +94,29 @@
     <footer class="w-full max-w-5xl mx-auto px-6 py-8 border-t border-[#F1F3F4] text-center">
         <p class="text-sm text-[#80868B]">© 2026 Alex Creations. All rights reserved.</p>
     </footer>
+
+    <!-- Fetch Logic -->
+    <script>
+        async function loadReadme() {
+            const container = document.getElementById('dynamic-content');
+            // Fetching the raw README.md directly from your main branch
+            const readmeUrl = "https://raw.githubusercontent.com/Sakhaalex/Web_Apps/main/README.md";
+            
+            try {
+                const response = await fetch(readmeUrl);
+                if (!response.ok) throw new Error("Failed to fetch README");
+                const rawMarkdown = await response.text();
+                
+                // Render the markdown into the container
+                container.innerHTML = marked.parse(rawMarkdown);
+            } catch (error) {
+                console.error("Error loading README:", error);
+                container.innerHTML = `<p class="text-red-500">Could not load the directory at this time. Please visit the <a href="https://github.com/Sakhaalex/Web_Apps">GitHub repository</a> directly.</p>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadReadme);
+    </script>
 
 </body>
 </html>
