@@ -1,11 +1,110 @@
 <!DOCTYPE html>
-<html>
-<head><title>Web_Apps</title></head>
-<body>
-  <h1>My Applications Portfolio</h1>
-  <ul>
-    <li><a href="./Step-case/">Step-case Application</a></li>
-    <!-- Future apps go here: <li><a href="./Project-2/">Project 2</a></li> -->
-  </ul>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Creations | Web Apps</title>
+    
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Noto Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #FFFFFF;
+            color: #202124;
+        }
+        /* Subtle hover lift for project cards */
+        .project-card {
+            transition: all 0.2s ease-in-out;
+        }
+        .project-card:hover {
+            box-shadow: 0 4px 12px rgba(60,64,67,0.08);
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Branding -->
+    <header class="w-full max-w-5xl mx-auto px-6 py-12 flex items-center justify-between border-b border-[#F1F3F4]">
+        <div class="flex items-center gap-4">
+            <!-- 
+              LOGO UPLOAD INSTRUCTIONS: 
+              Upload your circular SVG logo to the root folder and name it 'logo.svg' 
+            -->
+            <div class="w-12 h-12 bg-[#F8F9FA] rounded-full flex items-center justify-center border border-[#E8EAED] overflow-hidden">
+                <img src="logo.svg" alt="Alex Creations" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            </div>
+            <div>
+                <h1 class="text-xl font-bold text-[#202124] tracking-tight">Alex Creations</h1>
+                <p class="text-sm text-[#5F6368]">Application Portfolio</p>
+            </div>
+        </div>
+        <div>
+            <a href="https://github.com/Sakhaalex" target="_blank" class="text-sm font-medium text-[#1A73E8] hover:underline">
+                View GitHub Profile
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content & Project Grid -->
+    <main class="w-full max-w-5xl mx-auto px-6 py-16 flex-grow">
+        
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold tracking-tight mb-4">Workspace & Projects</h2>
+            <p class="text-lg text-[#5F6368] max-w-2xl">
+                A collection of minimalist, high-performance web applications and desktop tools focused on frictionless user experiences.
+            </p>
+        </div>
+
+        <!-- The Grid (Automatically responsive) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- PROJECT 1: Step-case -->
+            <a href="./Step-case/" class="project-card block border border-[#E8EAED] rounded-2xl p-6 group bg-white cursor-pointer relative">
+                <!-- Top Right Arrow Icon -->
+                <div class="absolute top-6 right-6 text-[#9AA0A6] group-hover:text-[#1A73E8] transition-colors">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </div>
+                
+                <h3 class="text-xl font-bold text-[#202124] mb-2 pr-8">Step-case</h3>
+                <p class="text-sm text-[#5F6368] mb-6 line-clamp-3">
+                    The minimalist, interactive playbook engine. Create weightless, distraction-free software runbooks without the dashboard bloat.
+                </p>
+                
+                <div class="flex items-center gap-2 mt-auto">
+                    <span class="px-2.5 py-1 bg-[#E8F0FE] text-[#1967D2] text-xs font-semibold rounded-md">Desktop App</span>
+                    <span class="px-2.5 py-1 bg-[#F1F3F4] text-[#3C4043] text-xs font-medium rounded-md">Vanilla JS</span>
+                </div>
+            </a>
+
+            <!-- PROJECT 2: Coming Soon (Placeholder) -->
+            <div class="block border border-dashed border-[#DADCE0] rounded-2xl p-6 bg-[#F8F9FA] flex flex-col justify-center items-center text-center min-h-[200px]">
+                <div class="w-10 h-10 bg-[#E8EAED] rounded-full flex items-center justify-center mb-3">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5F6368" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-medium text-[#5F6368]">New Project</h3>
+                <p class="text-sm text-[#80868B] mt-1">In development...</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-5xl mx-auto px-6 py-8 border-t border-[#F1F3F4] text-center">
+        <p class="text-sm text-[#80868B]">© 2026 Alex Creations. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
