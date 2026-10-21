@@ -1,6 +1,0 @@
-{
-  "name": "Step-case - Interactive Playbook & Runbook Desktop App",
-  "description": "An offline interactive playbook and runbook application. Build SOPs visually and run step-by-step interactive playbooks with decision branching.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
