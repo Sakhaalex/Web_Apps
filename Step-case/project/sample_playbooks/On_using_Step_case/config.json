@@ -1,0 +1,525 @@
+{
+  "version": "1.0",
+  "name": "On_using_step_case",
+  "title": "On using step-case",
+  "description": "The complete, distraction-free manual for authoring, structuring, and executing standard operating procedures in Step-case.",
+  "start_screen_id": "screen_routing_hub",
+  "screens": [
+    {
+      "id": "screen_routing_hub",
+      "title": "Adding Optional Routes",
+      "description": "Screens act as decision points that branch your workflow into dedicated sequences. Select a sequence below:",
+      "disable_back": false,
+      "options": [
+        {
+          "id": "opt_auth",
+          "label": "1. Creating & Managing Sequences",
+          "target_sequence_id": "seq_authoring"
+        },
+        {
+          "id": "opt_actions",
+          "label": "2. Interactive Action Blocks (Checklists & 1-Click Copy)",
+          "target_sequence_id": "seq_action_blocks"
+        },
+        {
+          "id": "opt_exec",
+          "label": "3. Fullscreen Player Mode & Zero-Defect Execution",
+          "target_sequence_id": "seq_player_execution"
+        }
+      ]
+    }
+  ],
+  "sequences": [
+    {
+      "id": "seq_authoring",
+      "title": "Creating & Managing Sequences",
+      "step_ids": [
+        "step_auth_1",
+        "step_auth_2",
+        "step_auth_3"
+      ],
+      "next_screen_id": null
+    },
+    {
+      "id": "seq_action_blocks",
+      "title": "Interactive Action Blocks (Checklists & 1-Click Copy)",
+      "step_ids": [
+        "step_act_1",
+        "step_act_2",
+        "step_act_3"
+      ],
+      "next_screen_id": null
+    },
+    {
+      "id": "seq_player_execution",
+      "title": "Fullscreen Player Mode & Zero-Defect Execution",
+      "step_ids": [
+        "step_ply_1",
+        "step_ply_2",
+        "step_ply_3"
+      ],
+      "next_screen_id": null
+    }
+  ],
+  "sections": [
+    {
+      "id": "sec_editor",
+      "title": "Section 1: The Weightless Editor & Canvas",
+      "from_step": 1,
+      "to_step": 4,
+      "skippable": true,
+      "screen_ids": [],
+      "step_ids": [
+        "step_ed_1",
+        "step_ed_2",
+        "step_ed_3",
+        "step_ed_4"
+      ]
+    },
+    {
+      "id": "sec_branching",
+      "title": "Section 2: Structuring & Branching (The Decision Router)",
+      "from_step": 1,
+      "to_step": 2,
+      "skippable": true,
+      "screen_ids": [
+        "screen_routing_hub"
+      ],
+      "step_ids": [
+        "step_br_1",
+        "step_br_2"
+      ]
+    },
+    {
+      "id": "sec_distribution",
+      "title": "Section 3: Distribution, Export & Inno Setup Packaging",
+      "from_step": 1,
+      "to_step": 4,
+      "skippable": true,
+      "screen_ids": [],
+      "step_ids": [
+        "step_dist_1",
+        "step_dist_2",
+        "step_dist_3",
+        "step_dist_4"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "id": "step_ed_1",
+      "title": "The Blank Slate & The Ruled Line",
+      "content_text": "Step-case is designed for speed, clarity, and cognitive focus. It rejects modal dialogue forms, bloated document continuous scrolling, and distracting toolbars.\n\nThe Two-Pane Architecture:\n- Left Sidebar: The structured tree view displaying Playbooks, Sections, Screens, Sequences, and Steps with drag-and-drop reordering.\n- Right Canvas: A weightless single-instance workspace displaying strictly one active unit at a time.\n\nThe Signature Blue Ruled Line:\nWhen writing or editing a procedure, you type directly on a single signature blue line. There are no clunky input boxes or rich-text toolbar buttons floating around. Your thoughts flow directly onto the page.\n\nSingle-Instance Focus:\nSurrounding steps are completely hidden from view. By removing continuous scrolling, Step-case guarantees you focus 100% on the single instruction at hand.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_ed1_1",
+          "text": "Observe the single signature blue ruled line across the canvas",
+          "checked": true
+        },
+        {
+          "id": "c_ed1_2",
+          "text": "Notice that previous and subsequent steps are completely hidden",
+          "checked": true
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": false
+    },
+    {
+      "id": "step_ed_2",
+      "title": "Single-Page Pagination Mechanics",
+      "content_text": "Continuous scrolling causes cognitive fatigue and makes runbook execution error-prone. Step-case replaces continuous scrolling with single-page pagination:\n\n1. Writing Multiple Lines: Press Enter to create a natural line break inside the current step's instruction.\n2. Page-Flip to New Step: Press Ctrl+Enter (or click the + Add Step button) to instantly flip the page to a fresh, blank blue line with auto-focus.\n3. Quick Deletion: If a step is empty, pressing Backspace automatically removes it and turns back to the preceding page.\n4. Arrow Navigation: Press ArrowLeft at the start of text or ArrowRight at the end to seamlessly page through steps without touching the mouse.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_ed2_1",
+          "text": "Press Enter to create a newline within this step",
+          "checked": false
+        },
+        {
+          "id": "c_ed2_2",
+          "text": "Press Ctrl+Enter to flip to a fresh blank step page",
+          "checked": false
+        }
+      ],
+      "copy_fields": [
+        {
+          "label": "Turn Page Shortcut",
+          "value": "Ctrl+Enter"
+        }
+      ],
+      "disable_back": false
+    },
+    {
+      "id": "step_ed_3",
+      "title": "Navigating Steps Without Continuous Scrolling",
+      "content_text": "Paging through complex multi-step procedures in Step-case is swift, precise, and contained:\n\n- Pagination Pills: The top navigation bar displays numbered pill buttons (1, 2, 3...) scoped to the active sequence or section. Click any pill to jump straight to that page.\n- Prev & Next Controls: Use \u25c0 Prev and Next \u25b6 buttons to step through pages sequentially.\n- Sidebar Tree: The left sidebar provides an instant structural overview. Click any step in the tree to swap the canvas view instantly.\n- Breadcrumb Lineage: The top-left header displays your exact operational location (e.g., Section 1 \u203a Step 3 of 4).",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_ed3_1",
+          "text": "Click any number in the pagination pill bar to jump to that step",
+          "checked": false
+        },
+        {
+          "id": "c_ed3_2",
+          "text": "Click a step in the left sidebar tree to swap the active canvas page",
+          "checked": false
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": false
+    },
+    {
+      "id": "step_ed_4",
+      "title": "The Ruled Line Action Toolbar",
+      "content_text": "On the right side of the blue ruled line sits a compact 4-icon action toolbar:\n\n1. Plus (+) Menu: Quickly inserts verification checklist items, 1-click copy fields, extended notes, or bullet points.\n2. Clipboard (\ud83d\udccb) Menu: Copies the entire step text to your clipboard, duplicates the current step, or pastes external text directly.\n3. Quick Checkdown Icon: Adds an interactive verification checkbox below the line with a single click.\n4. Step Options (\u22ee) Menu: Allows toggling strict lock-step mode, marking section boundaries, or safely deleting the step.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_ed4_1",
+          "text": "Explore the 4-icon toolbar on the right edge of the ruled line",
+          "checked": false
+        },
+        {
+          "id": "c_ed4_2",
+          "text": "Test copying step text via the clipboard menu icon",
+          "checked": false
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": false
+    },
+    {
+      "id": "step_br_1",
+      "title": "Using the 3-Dot Options Menu & Actions",
+      "content_text": "To keep the canvas weightless and free of button clutter, all insertion and configuration options are consolidated into the vertical 3-dot (\u22ee) menu located at the top-right corner of the canvas:\n\n- Add Step: Inserts a fresh step and flips the page (Ctrl+Enter).\n- Add Screen: Inserts a decision point screen for branching procedures.\n- Add Route: Attaches a new sequence path to the active decision screen.\n- Attach Image: Opens file picker to attach diagrams or screenshots into /assets/.\n- Add Checklist Item: Inserts verification checkboxes below the step.\n- Add Copy Command: Attaches terminal commands with 1-click clipboard copy.\n- Mark Section: Establishes a skippable milestone boundary.\n- Toggle Strict Lock: Disables the Back button for irreversible steps.\n- Delete: Safely removes the active item with confirmation safeguard.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_br1_1",
+          "text": "Open the vertical 3-dot menu from the top-right toolbar",
+          "checked": false
+        },
+        {
+          "id": "c_br1_2",
+          "text": "Verify that all actions are accessible without canvas clutter",
+          "checked": false
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": false
+    },
+    {
+      "id": "step_br_2",
+      "title": "The 'Mark a Section' Feature & Skippable Milestones",
+      "content_text": "Sections organize sequential steps into logical milestones (e.g. 'Prerequisites', 'Core Setup', 'System Verification').\n\nHow Sections Work:\n1. Visual Grouping: The sidebar tree clusters steps under clear, collapsible section headers.\n2. Skippable Milestones: In Player Mode, the runner displays prominent milestone indicators and a 'Skip Section' button.\n3. Operator Efficiency: Qualified engineers who have already satisfied prerequisite steps can bypass an entire section with one click while maintaining full execution auditability.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_br2_1",
+          "text": "Identify steps that constitute a distinct prerequisite milestone",
+          "checked": false
+        },
+        {
+          "id": "c_br2_2",
+          "text": "Select Mark Section from the 3-dot menu to set a skippable milestone boundary",
+          "checked": false
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": false
+    },
+    {
+      "id": "step_auth_1",
+      "title": "What is a Sequence?",
+      "content_text": "A Sequence represents an isolated procedure branch within a decision screen (e.g., 'Windows Setup', 'macOS Setup', or 'Docker Deployment').\n\nKey Architecture Principles:\n- Complete Isolation: Each sequence is maintained as its own dedicated workflow.\n- No Clutter or Leakage: Screens act strictly as routers. Step text is NEVER leaked or previewed inside the router card, keeping the decision interface crystal clear.\n- Independent Step Numbering: Inside each sequence, steps have their own independent numbering starting from Step 1!",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_au1_1",
+          "text": "Observe how the Screen Router view displays only route choices",
+          "checked": true
+        },
+        {
+          "id": "c_au1_2",
+          "text": "Verify that step text is never pre-rendered inside sequence cards",
+          "checked": true
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": false
+    },
+    {
+      "id": "step_auth_2",
+      "title": "Entering a Sequence (The Doorway Concept)",
+      "content_text": "Every sequence route is an isolated doorway into a dedicated step-by-step workflow:\n\n- Entering: Clicking the arrow (\u2192) next to any sequence title clears the Screen router view and immediately enters Step 1 of that sequence.\n- Independent Step Numbering: Inside each sequence, steps are numbered 1, 2, 3... starting fresh.\n- Isolated Focus: You author and execute the sequence without seeing unrelated steps from other branches.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_au2_1",
+          "text": "Click the arrow (\u2192) on a sequence card to enter its doorway",
+          "checked": false
+        },
+        {
+          "id": "c_au2_2",
+          "text": "Notice the step counter resets to Step 1 of this specific sequence",
+          "checked": true
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": false
+    },
+    {
+      "id": "step_auth_3",
+      "title": "Returning to the Decision Router",
+      "content_text": "When authoring or executing inside a sequence, you can return to the parent decision screen at any moment:\n\n- Breadcrumb Trail: The top navigation bar displays the lineage (e.g. Adding Optional Routes \u203a Sequence Title \u203a Step 1 of 3).\n- 1-Click Return: Click the parent Screen title in the breadcrumb trail to return instantly to the Decision Router.\n- State Preservation: Your active edits, checklist toggles, and position are preserved automatically.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_au3_1",
+          "text": "Click the parent screen link in the breadcrumb trail",
+          "checked": false
+        },
+        {
+          "id": "c_au3_2",
+          "text": "Confirm that the router view restores immediately",
+          "checked": false
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": false
+    },
+    {
+      "id": "step_act_1",
+      "title": "Verification Checklists in Raw Markdown ([ ])",
+      "content_text": "Procedures require proof of completion. Attach interactive checkdown items to ensure operators verify critical conditions before proceeding:\n\n- Checklists render cleanly beneath the blue ruled line.\n- Each item can be toggled by clicking the box.\n- A real-time counter displays completion status (e.g., 2/3 items verified).\n- In the underlying Markdown files, checklists are stored as standard '- [ ] item' or '- [x] item' task lists.\n- Checklists automatically persist across authoring and execution modes.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_ac1_1",
+          "text": "Confirm hardware power is connected and operational",
+          "checked": false
+        },
+        {
+          "id": "c_ac1_2",
+          "text": "Verify network connectivity to production servers",
+          "checked": false
+        },
+        {
+          "id": "c_ac1_3",
+          "text": "Ensure administrative permissions are active in terminal",
+          "checked": false
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": false
+    },
+    {
+      "id": "step_act_2",
+      "title": "1-Click Copyable Command Snippets",
+      "content_text": "Never force operators to manually highlight and copy shell commands or configuration parameters. Manual copying introduces whitespace errors, missed characters, and catastrophic deployment failures.\n\nHow to Attach Copy Commands:\n1. Select 'Add Copy Command' from the top-right 3-dot menu (or the blue + line toolbar).\n2. Enter a clear label (e.g. 'Install CLI', 'Start Service').\n3. Enter the exact command string.\n\nIn Player Mode, operators simply click the 'Copy' button for zero-defect terminal execution.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_ac2_1",
+          "text": "Add a 1-click copy command to this step",
+          "checked": false
+        },
+        {
+          "id": "c_ac2_2",
+          "text": "Test the copy button to verify clipboard integration",
+          "checked": false
+        }
+      ],
+      "copy_fields": [
+        {
+          "label": "Install CLI",
+          "value": "npm install -g step-case-cli"
+        },
+        {
+          "label": "Verify Version",
+          "value": "stepcase --version"
+        }
+      ],
+      "disable_back": false
+    },
+    {
+      "id": "step_act_3",
+      "title": "Strict Lock-Step Protection",
+      "content_text": "Some operational steps are completely irreversible (e.g. formatting a drive, flashing firmware, or applying database migrations).\n\nIn Step-case, authors can enable Strict Lock-Step:\n- Select 'Toggle Strict Lock' from the 3-dot menu.\n- In Player Mode, the 'Back' button is disabled on this step.\n- Operators cannot accidentally return to or repeat destructive operations.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_ac3_1",
+          "text": "Identify irreversible or destructive procedural steps",
+          "checked": false
+        },
+        {
+          "id": "c_ac3_2",
+          "text": "Enable Strict Lock to safeguard against accidental operator rollback",
+          "checked": false
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": true
+    },
+    {
+      "id": "step_ply_1",
+      "title": "Launching Fullscreen Presentation Layer",
+      "content_text": "Click the 'Play' button in the header bar (or press F5) to launch the Fullscreen Presentation Runner.\n\nDesigned for High-Reliability Operations:\n- Immersive View: Authoring tools, sidebars, and edit buttons vanish completely.\n- High-Legibility Typography: Extra-large text easily readable from across a workbench or machine terminal.\n- Ambient Progress: A subtle, translucent blue gradient tracks completion across the sequence.\n- Operator Safety: Prominent 1-click copy buttons and big tactile Next/Back targets.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_pl1_1",
+          "text": "Launch Player Mode using the top bar Play button",
+          "checked": false
+        },
+        {
+          "id": "c_pl1_2",
+          "text": "Verify high-contrast large-format typography on screen",
+          "checked": false
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": false
+    },
+    {
+      "id": "step_ply_2",
+      "title": "The Esc Key Logic & Windowed State",
+      "content_text": "In Player Mode, pressing the Esc key exits fullscreen mode to a clean windowed read-only viewer.\n\nCRITICAL ARCHITECTURAL CONSTRAINT:\nPressing Esc does NOT drop the operator back into the authoring editor, and it does NOT close or reset the active runbook.\n\nWhy this matters:\n- On production floors, operators frequently press Esc to dismiss popups or OS notifications.\n- Step-case protects live execution state: checklist progress and step position remain 100% intact.\n- To return to the Editor, the user must explicitly click the dedicated 'Edit' button in the header.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_pl2_1",
+          "text": "Press Esc during fullscreen playback",
+          "checked": false
+        },
+        {
+          "id": "c_pl2_2",
+          "text": "Confirm the runner drops to a windowed state without losing active execution state",
+          "checked": false
+        }
+      ],
+      "copy_fields": [
+        {
+          "label": "Windowed Toggle",
+          "value": "Esc"
+        }
+      ],
+      "disable_back": false
+    },
+    {
+      "id": "step_ply_3",
+      "title": "Navigation & Section Skipping in Player Mode",
+      "content_text": "Operators can navigate through live runbooks with zero friction:\n\n- Next Step: Click the Next button, press ArrowRight, or press Space.\n- Previous Step: Click the Back button or press ArrowLeft (unless Strict Lock-Step is enabled).\n- Decision Selection: When reaching a screen, click any route button (or press 1, 2, 3...) to choose a branch.\n- Section Skipping: If an operator has already satisfied prerequisite steps, clicking 'Skip Section' leaps directly to the first step of the next milestone.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_pl3_1",
+          "text": "Use ArrowRight or Space to advance through steps",
+          "checked": false
+        },
+        {
+          "id": "c_pl3_2",
+          "text": "Use ArrowLeft to return to previous steps",
+          "checked": false
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": false
+    },
+    {
+      "id": "step_dist_1",
+      "title": "The Hybrid Data Architecture",
+      "content_text": "Step-case rejects opaque proprietary databases and bloated binary files. It implements the Hybrid Data Architecture:\n\n1. config.json: Stores strictly the structural skeleton (Screens, Sequences, Sections, and routing metadata).\n2. content/*.md: Each sequence is saved as a single human-readable Markdown file. Individual steps are delimited by standard '---' rules.\n3. assets/: All screenshots, diagrams, and vector assets are stored as relative files.\n\nBenefits:\n- 100% Git-friendly: Diff procedures, review pull requests, and audit changes using standard version control.\n- Offline-first: Runbooks work without external cloud dependencies or database servers.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_ds1_1",
+          "text": "Understand how config.json stores the routing graph",
+          "checked": true
+        },
+        {
+          "id": "c_ds1_2",
+          "text": "Understand how content/*.md stores steps separated by '---'",
+          "checked": true
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": false
+    },
+    {
+      "id": "step_dist_2",
+      "title": "Exporting Portable ZIP Bundles",
+      "content_text": "Export ZIP packages your entire playbook into a self-contained .zip bundle containing config.json, all content/*.md files, and assets/.\n\nFeatures:\n- Any Step-case instance can import and execute this bundle immediately with zero broken paths.\n- Portable offline backup of all procedural knowledge.\n- Compatible with automated CI/CD distribution pipelines.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_ds2_1",
+          "text": "Test Export ZIP from the top menu to create a shareable archive",
+          "checked": false
+        },
+        {
+          "id": "c_ds2_2",
+          "text": "Verify that all sequence markdown files and assets are bundled intact",
+          "checked": false
+        }
+      ],
+      "copy_fields": [
+        {
+          "label": "Export CLI Command",
+          "value": "stepcase export --format zip --output playbook.zip"
+        }
+      ],
+      "disable_back": false
+    },
+    {
+      "id": "step_dist_3",
+      "title": "Printing & PDF Publication Manuals",
+      "content_text": "Step-case automatically compiles your branched runbook into a linear, publication-grade user manual.\n\nAutomated Document Compilation:\n- Title Cover Page with author attribution and metadata.\n- Dynamic Table of Contents indexing all sections, screens, and sequences.\n- Cleanly formatted step instructions, checklists, and copyable commands.\n- Appendix detailing troubleshooting and error paths.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_ds3_1",
+          "text": "Select Print Manual from the top menu to inspect the automated layout",
+          "checked": false
+        },
+        {
+          "id": "c_ds3_2",
+          "text": "Confirm dynamic Table of Contents generation across sections",
+          "checked": false
+        }
+      ],
+      "copy_fields": [],
+      "disable_back": false
+    },
+    {
+      "id": "step_dist_4",
+      "title": "Windows Inno Setup Compilation & Installer",
+      "content_text": "Step-case is compiled into a standalone Windows installer using Inno Setup:\n\n- Target Executable: Step-case.exe generated via PyInstaller.\n- Default Playbooks Location: Installed to {commonappdata}\\Step-case\\default_playbooks so 'On using step-case' is immediately available on first launch.\n- Persistent User Directory: %APPDATA%\\Step-case\\playbooks stores user-authored playbooks and persists across software updates.\n- Zero External Dependencies: PyWebView and local assets are bundled into a self-contained installation.",
+      "assets": [],
+      "checklist": [
+        {
+          "id": "c_ds4_1",
+          "text": "Review Inno Setup [Files] directives for bundling default playbooks",
+          "checked": true
+        },
+        {
+          "id": "c_ds4_2",
+          "text": "Ensure persistent user data directories remain untouched on update",
+          "checked": true
+        }
+      ],
+      "copy_fields": [
+        {
+          "label": "Inno Setup Compiler CLI",
+          "value": "iscc.exe installer\\setup_script.iss"
+        }
+      ],
+      "disable_back": false
+    }
+  ],
+  "playbook_name": "On using step-case"
+}
